@@ -55,3 +55,13 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<script src="./js/function_lib"></script>
+
+
+<script>
+  console.log(get_page_json("search.php"));
+
+</script>
+
+
+
