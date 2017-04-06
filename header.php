@@ -1,7 +1,8 @@
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<nav class="navbar navbar-default">
+<link rel="stylesheet" href="/css/navbar.css">
+<nav class="navbar navbar-custom">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
