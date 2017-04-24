@@ -58,6 +58,9 @@ if (isset($_GET['q'])) {
 
 if (!$return['error']['result']) {
     foreach ($return['result'] as $def) {
-        print_r($_GET['q'].' - '.$def[0].'<br>');
+    	print_r('<div class="panel panel-primary"><div class="panel-heading">');
+        print_r($_GET['q'].'<br></div>');
+        print_r('<div class="panel-body">'.$def[0]);
+        print_r("</div></div>");
     }
 }

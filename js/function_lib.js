@@ -43,11 +43,14 @@ function search_database(query) {
                 for (var i = 0; i < data.result.length; i++) {
                     var tmp = $("#search_output").html();
                     // $("#search_output").html(tmp + data.result[i] + "<br>");
-                    $("#search_output").html(tmp + '<a href="definition.php?q='
+                    $("#search_output").html(tmp 
+                        + '<div class="panel panel-default" >'
+                        +'<div class="panel-body">'
+                        +'<a href="definition.php?q='
                         + data.result[i]
                         + '">'
                         + data.result[i]
-                        + '</a><br>');
+                        + '</a></div></div><br>');
                 }
             }
         },
