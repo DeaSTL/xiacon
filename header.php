@@ -30,7 +30,7 @@
           <input type="text" class="form-control" placeholder="Search" id="search_bar" onkeyup=
           ' document.getElementById("search_output").innerHTML = ""; if(this.value.length >= 1){search_database(this.value);}'>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+     
       </form>
       <ul class="nav navbar-nav navbar-right">
       
