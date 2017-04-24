@@ -16,7 +16,7 @@ function search_database(query){
                 document.getElementById("search_output").innerHTML = "";
             }else{
                 for(var i = 0;i<data.length;i++){
-                document.getElementById("search_output").innerHTML += data[i] + "</br>";
+                document.getElementById("search_output").innerHTML += '<a href=definition.php?q=' + data[i] + '>'+ data[i] +'</a>' + "</br>";
             }    
             }
             

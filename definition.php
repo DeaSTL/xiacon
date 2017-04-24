@@ -10,8 +10,11 @@ function get_definition($word){
 }
 
 if(isset($_GET['q'])){
-	foreach(get_definition() as $def){
-		print_r($def);
+	foreach(get_definition($_GET['q']) as $def){
+		print_r($_GET['q']);
+		print_r(" - ");
+		print_r($def[0]);
+		print_r('<br>');
 	}
 }
 
