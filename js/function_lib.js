@@ -5,29 +5,6 @@ function get_page_json(filename){
 	return xm.responseText;
 }
 
-// function search_database(query){
-//     $.ajax({
-//         url: 'search.php',
-//         type: 'get',
-//         dataType: 'json',
-//         data: { q: query },
-//         success: function(data, status, xhr) {
-          
-//             if(data.length == 0){
-//                 document.getElementById("search_output").innerHTML = "";
-//             }else{
-//                 for(var i = 0;i<data.length;i++){
-//                 document.getElementById("search_output").innerHTML += '<a href=definition.php?q=' + data[i] + '>'+ data[i] +'</a>' + "</br>";
-//             }    
-//             }
-            
-//         },
-//         error: function(xhr, status, error) {
-//             console.log("Status: " + status + " // Error: " + error);
-//         }
-//     });
-// }
-
 function search_database(query) {
     $.ajax({
         url: 'search.php',
@@ -42,7 +19,6 @@ function search_database(query) {
 
                 for (var i = 0; i < data.result.length; i++) {
                     var tmp = $("#search_output").html();
-                    // $("#search_output").html(tmp + data.result[i] + "<br>");
                     $("#search_output").html(tmp 
                         + '<div class="panel panel-default" >'
                         +'<div class="panel-body">'
