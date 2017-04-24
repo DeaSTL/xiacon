@@ -1,11 +1,13 @@
 <?php 
-	$link = new mysqli()
+	$link = new mysqli("localhost","root","","entries");
 
-	function search(){
-
+	function search($query){
+		global $link;
+		$o = $link->query("SELECT `word` FROM `entries` WHERE `word` LIKE '$query%' LIMIT 50");
+		return $o->fetch_all(); 
 
 	}
 	if(isset($_GET['q'])){
-		echo json_encode($_GET);
+		echo json_encode(search($_GET['q']));
 	}
 ?>

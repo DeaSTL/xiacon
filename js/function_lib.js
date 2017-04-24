@@ -11,7 +11,15 @@ function search_database(query){
         dataType: 'json',
         data: { q: query },
         success: function(data, status, xhr) {
-            console.log(data);
+          
+            if(data.length == 0){
+                document.getElementById("search_output").innerHTML = "";
+            }else{
+                for(var i = 0;i<data.length;i++){
+                document.getElementById("search_output").innerHTML += data[i] + "</br>";
+            }    
+            }
+            
         },
         error: function(xhr, status, error) {
             console.log("Status: " + status + " // Error: " + error);
