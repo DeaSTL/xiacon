@@ -10,13 +10,8 @@
 	// if(isset($_GET['q'])){
 	// 	echo json_encode(search($_GET['q']));
 	// }
+include "function_lib.php";
 
-$link = new mysqli('localhost', 'root', '', 'entries');
-
-function escape($link, $string)
-{
-    return $link->real_escape_string($string);
-}
 
 $return = [
     'error' => [

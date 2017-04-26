@@ -16,7 +16,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Xiacon</a>
+      <a class="navbar-brand" href="/xiacon/">Xiacon</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
