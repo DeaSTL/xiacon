@@ -1,11 +1,7 @@
 <?php
 
-$link = new mysqli('localhost', 'root', '', 'entries');
+include "function_lib.php";
 
-function escape($link, $string)
-{
-    return $link->real_escape_string($string);
-}
 
 $return = [
     'error' => [
