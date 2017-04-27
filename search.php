@@ -19,9 +19,7 @@ if (isset($_GET['q'])) {
     
     if ($db->count()) {
         $return['error']['result'] = false;
-        // $return['result'] = $db->all();
         foreach ($db->all() as $item) {
-            // dump($item);
             $return['result'][] = $item->word;
         }
     }
