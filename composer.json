@@ -1,0 +1,28 @@
+{
+    "name": "deastl/xiacon",
+    "description": "nothing yet",
+    "keywords": [ "php" ],
+    "type": "project",
+    "authors": [
+        {
+            "name": "DeaSTL",
+            "homepage": "https://github.com/deastl"
+        },
+        {
+            "name": "Kaleb Klein",
+            "email": "klein.jae@gmail.com",
+            "homepage": "https://kalebklein.com"
+        }
+    ],
+    "require": {
+        "illuminate/filesystem": "^5.4",
+        "vlucas/phpdotenv": "^2.4",
+        "symfony/var-dumper": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/"
+        },
+        "files": [ "core/helpers.php" ]
+    }
+}
