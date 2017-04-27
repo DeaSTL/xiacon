@@ -3,7 +3,10 @@ $(function ()
 {
     // Use jQuery to do event listeners
     $("#search_bar").keyup(function (e) {
-        search_database($(this).val());
+        $("#search_output").empty();
+        if ($(this).val() !== '') {
+            search_database($(this).val());
+        }
     });
 });
 
