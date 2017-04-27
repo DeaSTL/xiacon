@@ -1,7 +1,8 @@
 <?php
 
-namespace Core;
+namespace Core\Foundation;
 
+use Core\Utils\File;
 use Dotenv\Dotenv;
 
 class Environment

@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Core\Utils;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;

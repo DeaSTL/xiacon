@@ -1,14 +1,12 @@
-<?php require_once __DIR__.'/init.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <?=script('jquery-3.2.0.min.js')?> 
-        <?=script('bootstrap.min.js')?> 
-        <?=script('function_lib.js')?> 
-        <?=style('bootstrap.min.css')?> 
-        <?=style('navbar.css')?> 
+        {!! script('jquery-3.2.0.min.js') !!}
+        {!! script('bootstrap.min.js') !!}
+        {!! script('function_lib.js') !!}
+        {!! style('bootstrap.min.css') !!}
+        {!! style('navbar.css') !!}
         <title>xiacon</title>
     </head>
     <body>
@@ -21,7 +19,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?=link_to('/')?>">Xiacon</a>
+                    {!! link_to('/', 'Xiacon', ['class' => 'navbar-brand']) !!}
                 </div>
 
                 <div class="collapse navbar-collapse" id="nbcol">
@@ -39,30 +37,6 @@
                 </div>
             </div>
         </nav>
-        <div id="search_output">
-            <?php
-
-            $db = new Core\Database();
-
-            if (isset($_GET['q'])) {
-                $db->select('entries', ['word', '=', $_GET['q']]);
-
-                if ($db->count()) {
-                    foreach ($db->all() as $item) {
-                        $word = $item->word;
-                        $def = $item->definition;
-                        $content = <<<EOF
-<div class="panel panel-primary"><div class="panel-heading">$word</div><div class="panel-body">$def</div></div>
-EOF;
-                        
-                        echo $content;
-                    }
-                } else {
-                    echo 'The requested word was not found in the database!';
-                }
-            }
-
-            ?>
-        </div>
+        @yield('content')
     </body>
 </html>
