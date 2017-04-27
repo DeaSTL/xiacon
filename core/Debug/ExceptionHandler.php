@@ -4,7 +4,6 @@ namespace Core\Debug;
 
 use ErrorException;
 use Exception;
-use Scara\Config\Configuration;
 use Symfony\Component\Debug\Exception\FatalErrorException;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 

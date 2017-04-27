@@ -17,7 +17,7 @@ class Singleton
     {
         $class = new $classname();
 
-        switch(count($params)) {
+        switch (count($params)) {
             case 0:
             return $class->$method();
             case 1:

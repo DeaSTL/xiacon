@@ -2,7 +2,6 @@
 
 namespace Core\Database;
 
-use Exception;
 use PDO;
 
 class Database
@@ -305,7 +304,7 @@ class Database
     }
 
     /**
-     * Gets the number of results
+     * Gets the number of results.
      *
      * @return int
      */

@@ -54,7 +54,7 @@
                         $content = <<<EOF
 <div class="panel panel-primary"><div class="panel-heading">$word</div><div class="panel-body">$def</div></div>
 EOF;
-                        
+
                         echo $content;
                     }
                 } else {
