@@ -1,7 +1,8 @@
 <?php
 
-include "function_lib.php";
+require_once __DIR__.'/init.php';
 
+$db = new Core\Database();
 
 $return = [
     'error' => [
@@ -12,10 +13,17 @@ $return = [
 ];
 
 if (isset($_GET['q'])) {
-    $query = escape($link, $_GET['q']);
-    $q = $link->query("SELECT `word` FROM `entries` WHERE `word` LIKE '$query%' LIMIT 50");
-    $return['error']['result'] = false;
-    $return['result'] = $q->fetch_all();
+    $db->orderBy('word', 'ASC')
+    ->setLimit(50)->select('entries', ['word', 'LIKE', $_GET['q'].'%']);
+    
+    if ($db->count()) {
+        $return['error']['result'] = false;
+        // $return['result'] = $db->all();
+        foreach ($db->all() as $item) {
+            // dump($item);
+            $return['result'][] = $item->word;
+        }
+    }
 } else {
     $return['error']['message'] = 'Data is empty!';
 }

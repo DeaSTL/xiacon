@@ -1,11 +1,13 @@
-function get_page_json(filename){
-	xm = new XMLHttpRequest();
-	xm.open("GET",filename,true);
-	xm.send(null);
-	return xm.responseText;
-}
+// Initialize jQuery
+$(function ()
+{
+    // Use jQuery to do event listeners
+    $("#search_bar").keyup(function (e) {
+        search_database($(this).val());
+    });
+});
 
-function search_database(query) {
+function search_database (query) {
     $.ajax({
         url: 'search.php',
         type: 'get',
