@@ -1,17 +1,8 @@
-<?php 
-	// $link = new mysqli("localhost","root","","entries");
+<?php
 
-	// function search($query){
-	// 	global $link;
-	// 	$o = $link->query("SELECT `word` FROM `entries` WHERE `word` LIKE '$query%' LIMIT 50");
-	// 	return $o->fetch_all(); 
+require_once __DIR__.'/init.php';
 
-	// }
-	// if(isset($_GET['q'])){
-	// 	echo json_encode(search($_GET['q']));
-	// }
-include "function_lib.php";
-
+$db = new Core\Database();
 
 $return = [
     'error' => [
@@ -22,10 +13,17 @@ $return = [
 ];
 
 if (isset($_GET['q'])) {
-    $query = escape($link, $_GET['q']);
-    $q = $link->query("SELECT `word` FROM `entries` WHERE `word` LIKE '$query%' LIMIT 50");
-    $return['error']['result'] = false;
-    $return['result'] = $q->fetch_all();
+    $db->orderBy('word', 'ASC')
+    ->setLimit(50)->select('entries', ['word', 'LIKE', $_GET['q'].'%']);
+    
+    if ($db->count()) {
+        $return['error']['result'] = false;
+        // $return['result'] = $db->all();
+        foreach ($db->all() as $item) {
+            // dump($item);
+            $return['result'][] = $item->word;
+        }
+    }
 } else {
     $return['error']['message'] = 'Data is empty!';
 }

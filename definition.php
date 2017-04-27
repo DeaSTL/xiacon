@@ -1,66 +1,68 @@
-<?php
-// include "header.php";
-// $link = new mysqli("localhost","root","","entries");
+<?php require_once __DIR__.'/init.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <?=script('jquery-3.2.0.min.js')?> 
+        <?=script('bootstrap.min.js')?> 
+        <?=script('function_lib.js')?> 
+        <?=style('bootstrap.min.css')?> 
+        <?=style('navbar.css')?> 
+        <title>xiacon</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-custom">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nbcol" aria-expanded="false">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?=link_to('/')?>">Xiacon</a>
+                </div>
 
-// $link = new mysqli('localhost', 'root', '', 'entries');
+                <div class="collapse navbar-collapse" id="nbcol">
+                    <ul class="nav navbar-nav">
+                        
+                    </ul>
+                    <form action="#" class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search" id="search_bar">
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="search_output">
+            <?php
 
-// function escape($link, $string)
-// {
-//     return $link->real_escape_string($string);
-// }
+            $db = new Core\Database();
 
-// function get_definition($word){
-// 	global $link;
-//     $word = escape($link, $word);
-// 	$o = $link->query("SELECT `definition` FROM `entries` WHERE `word`='$word'");
-// 	return $o->fetch_all();
-// }
+            if (isset($_GET['q'])) {
+                $db->select('entries', ['word', '=', $_GET['q']]);
 
-// if(isset($_GET['q'])){
-// 	// foreach(get_definition($_GET['q']) as $def){
-// 	// 	// print_r($_GET['q']);
-// 	// 	// print_r(" - ");
-// 	// 	// print_r($def[0]);
-// 	// 	// print_r('<br>');
-//  //        var_dump($def);
-// 	// }
-// }
+                if ($db->count()) {
+                    foreach ($db->all() as $item) {
+                        $word = $item->word;
+                        $def = $item->definition;
+                        $content = <<<EOF
+<div class="panel panel-primary"><div class="panel-heading">$word</div><div class="panel-body">$def</div></div>
+EOF;
+                        
+                        echo $content;
+                    }
+                } else {
+                    echo 'The requested word was not found in the database!';
+                }
+            }
 
-require_once __DIR__.'/header.php';
-
-$link = new mysqli('localhost', 'root', '', 'entries');
-
-function escape($link, $string)
-{
-    return $link->real_escape_string($string);
-}
-
-$return = [
-    'error' => [
-        'result' => true,
-        'message' => '',
-    ],
-    'result' => [],
-];
-
-if (isset($_GET['q'])) {
-    $word = escape($link, $_GET['q']);
-    // echo("SELECT `definition` FROM `entries` WHERE `word`='$word'");
-    $q = $link->query("SELECT `definition` FROM `entries` WHERE `word`='$word'");
-    $return['error']['result'] = false;
-    $return['result'] = $q->fetch_all();
-    // var_dump($q->fetch_all());
-} else {
-    $return['error']['message'] = 'Data is empty!';
-}
-
-// echo json_encode($return);
-
-if (!$return['error']['result']) {
-    foreach ($return['result'] as $def) {
-    	print_r('<div class="panel panel-primary"><div class="panel-heading">');
-        print_r($_GET['q'].'<br></div>');
-        print_r('<div class="panel-body">'.$def[0]);
-        print_r("</div></div>");
-    }
-}
+            ?>
+        </div>
+    </body>
+</html>
