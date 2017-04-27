@@ -18,12 +18,15 @@
         "illuminate/filesystem": "^5.4",
         "vlucas/phpdotenv": "^2.4",
         "symfony/var-dumper": "^3.2",
-        "phpixie/image": "^3.2"
+        "phpixie/image": "^3.2",
+        "philo/laravel-blade": "^3.1",
+        "symfony/debug": "^3.2",
+        "symfony/http-foundation": "^3.2"
     },
     "autoload": {
         "psr-4": {
             "Core\\": "core/"
         },
-        "files": [ "core/helpers.php" ]
+        "files": [ "core/Utils/helpers.php" ]
     }
 }

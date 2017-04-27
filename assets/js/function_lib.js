@@ -13,7 +13,7 @@ $(function ()
 
 function search_database (query) {
     $.ajax({
-        url: 'search.php',
+        url: 'search',
         type: 'get',
         dataType: 'json',
         data: { q: query },
@@ -28,7 +28,7 @@ function search_database (query) {
                     $("#search_output").html(tmp 
                         + '<div class="panel panel-default" >'
                         +'<div class="panel-body">'
-                        +'<a href="definition.php?q='
+                        +'<a href="definition?q='
                         + data.result[i]
                         + '">'
                         + data.result[i]

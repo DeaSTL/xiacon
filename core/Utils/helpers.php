@@ -1,8 +1,8 @@
 <?php
 
-use Core\Environment;
-use Core\Singleton;
-use Core\UrlGenerator;
+use Core\Foundation\Environment;
+use Core\Html\Html;
+use Core\Utils\Singleton;
 
 if (!function_exists('asset')) {
     /**
@@ -14,7 +14,7 @@ if (!function_exists('asset')) {
      */
     function asset($path)
     {
-        return Singleton::call(UrlGenerator::class, 'asset', [$path]);
+        return Singleton::call(Html::class, 'asset', [$path]);
     }
 }
 
@@ -28,7 +28,7 @@ if (!function_exists('script')) {
      */
     function script($path)
     {
-        return '<script src="'.asset('js/'.$path).'"> type="text/javascript"></script>';
+        return Singleton::call(Html::class, 'script', [$path]);
     }
 }
 
@@ -42,7 +42,21 @@ if (!function_exists('style')) {
      */
     function style($path)
     {
-        return '<link rel="stylesheet" type="text/css" href="'.asset('css/'.$path).'">';
+        return Singleton::call(Html::class, 'stylesheet', [$path]);
+    }
+}
+
+if (!function_exists('url')) {
+    /**
+     * Generates the absolute URL of the given URI.
+     *
+     * @param string $url
+     *
+     * @return string
+     */
+    function url($url)
+    {
+        return Singleton::call(Html::class, 'url', [$url]);
     }
 }
 
@@ -54,9 +68,9 @@ if (!function_exists('link_to')) {
      *
      * @return string
      */
-    function link_to($url)
+    function link_to($url, $content = '', $options = [])
     {
-        return Singleton::call(UrlGenerator::class, 'to', [$url]);
+        return Singleton::call(Html::class, 'link', [$url, $content, $options]);
     }
 }
 
@@ -99,5 +113,17 @@ if (!function_exists('base_path')) {
     function base_path()
     {
         return getcwd();
+    }
+}
+
+if (!function_exists('views_path')) {
+    /**
+     * Gets the views path.
+     *
+     * @return string
+     */
+    function views_path()
+    {
+        return base_path().'/display/views';
     }
 }
