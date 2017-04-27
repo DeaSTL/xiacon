@@ -2,8 +2,8 @@
 
 namespace Core\Debug;
 
-use Exception;
 use Core\Http\View;
+use Exception;
 use Symfony\Component\Debug\ErrorHandler as SymfonyErrorHandler;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\Debug\ExceptionHandler as SymfonyExceptionHandler;

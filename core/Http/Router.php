@@ -16,7 +16,7 @@ class Router
         $basepath = ($bp == '/') ? $bp : str_replace('/', '', $bp);
 
         $route = ['basepath' => $basepath];
-        
+
         if (count($uriexp) > 1) {
             foreach ($uriexp as $item) {
                 if ($item !== $basepath) {
